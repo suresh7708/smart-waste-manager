@@ -30,32 +30,45 @@ export const Route = createFileRoute("/")({
 const ROLES: {
   role: Role;
   label: string;
+  portal: string;
   blurb: string;
+  features: string[];
+  demo: string;
   icon: typeof User;
   to: "/user" | "/worker" | "/admin";
 }[] = [
   {
     role: "user",
     label: "User",
+    portal: "User Portal",
     blurb: "Resident / student — report waste and track complaints",
+    features: ["Photo-based reporting", "AI condition & priority", "Live status tracking", "Rate the resolution"],
+    demo: "priya.s@campus.edu",
     icon: User,
     to: "/user",
   },
   {
     role: "worker",
     label: "Worker",
+    portal: "Worker Portal",
     blurb: "Collection staff — view tasks and upload proof",
+    features: ["Assigned task list", "Location & photo context", "Start work timer", "Completion proof upload"],
+    demo: "anita.d@staff.edu",
     icon: HardHat,
     to: "/worker",
   },
   {
     role: "admin",
     label: "Admin",
+    portal: "Admin Portal",
     blurb: "Assign workers, verify work and read analytics",
+    features: ["Complaint queue & filters", "Worker assignment", "Before/after verification", "Hotspots & analytics"],
+    demo: "admin@campus.edu",
     icon: ShieldCheck,
     to: "/admin",
   },
 ];
+
 
 function LoginPage() {
   const { signIn } = useWasteStore();
