@@ -287,7 +287,7 @@ export function WasteStoreProvider({ children }: { children: ReactNode }) {
 
   type ComplaintPatch = { [K in keyof Complaint]?: Complaint[K] | undefined };
   const patch = useCallback((id: string, next: ComplaintPatch) => {
-    setComplaints((prev) => prev.map((c) => (c.id === id ? { ...c, ...next } : c)));
+    setComplaints((prev) => prev.map((c) => (c.id === id ? ({ ...c, ...next } as Complaint) : c)));
   }, []);
 
   const value = useMemo<Store>(
