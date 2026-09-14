@@ -285,7 +285,8 @@ export function WasteStoreProvider({ children }: { children: ReactNode }) {
   const [workers, setWorkers] = useState<Worker[]>(WORKERS);
   const [counter, setCounter] = useState(1032);
 
-  const patch = useCallback((id: string, next: Partial<Complaint>) => {
+  type ComplaintPatch = { [K in keyof Complaint]?: Complaint[K] | undefined };
+  const patch = useCallback((id: string, next: ComplaintPatch) => {
     setComplaints((prev) => prev.map((c) => (c.id === id ? { ...c, ...next } : c)));
   }, []);
 
